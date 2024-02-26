@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 20px;
+}
+header {
+    color: #333;
+    text-align: left;
+}
+main {
+    background-color: #fff;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#orderDetails {
+    text-align: left;
+    line-height: 1.6;
+}
+.highlight {
+    font-weight: bold;
+}

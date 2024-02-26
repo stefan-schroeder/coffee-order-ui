@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Condiments</title>
+    <link rel="stylesheet" href="condiments.css">
+</head>
+<body>
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div id="condiments" style="flex-grow: 1;">
+            <h1>Coffee Order System</h1>
+            <h2>Add the condiments</h2>
+            <button class="button" data-condiment="Milk">Milk</button>
+            <button class="button" data-condiment="Mocha">Mocha</button>
+            <button class="button" data-condiment="Soy">Soy</button>
+            <button class="button" data-condiment="Whip">Whip</button>
+        </div>
+
+        <div id="cart" style="width: 300px;">
+            <h2>My Order</h2>
+            <button class="button cart-item" onclick="location.href='index.html'">Selected Beverage</button>
+            <div id="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <button class="button confirm-order-button" onclick="location.href = 'confirmation.html'">Confirm Order</button>
+        </div>
+    </div>
+
+    <script>
+        
+    const cartItems = document.getElementById('cart-items');
+
+    document.getElementById('condiments').addEventListener('click', function(event) {
+        if (event.target.dataset.condiment) {
+        toggleCartItem(event.target.dataset.condiment);
+        }
+    });
+
+    cartItems.addEventListener('click', function(event) {
+        if (event.target.classList.contains('cart-item')) {
+        toggleCartItem(event.target.dataset.condiment);
+        }
+    });
+
+
+    function toggleCartItem(condiment) {
+        let existingItem = [...cartItems.children].find(item => item.dataset.condiment === condiment);
+        if (existingItem) {
+        cartItems.removeChild(existingItem);
+        } else {
+        let newItem = document.createElement('button');
+        newItem.textContent = condiment;
+        newItem.classList.add('button', 'cart-item');
+        newItem.dataset.condiment = condiment;
+        cartItems.appendChild(newItem);
+        }
+    }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f4e9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#condiments {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-right: 50px; /* Adjust the margin to align with the order box */
+}
+
+.button {
+    background-color: #c0c0c0;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px; /* Larger font size for better readability */
+    width: 100px; /* Fixed width for buttons */
+    height: 100px; /* Fixed height for buttons */
+    border-radius: 5px; /* Rounded corners for buttons */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+.button:hover {
+    background-color: #a9a9a9; /* Slightly darker shade on hover */
+}
+
+#cart {
+    background-color: #fff;
+    border: 2px solid #c0a080; /* Color for the border */
+    color: #333;
+    padding: 20px;
+    width: 250px; /* Fixed width for the order box */
+    border-radius: 5px; /* Rounded corners for the order box */
+}
+
+#cart h2 {
+    margin-top: 0;
+    color: #c0a080; /* Color for the header text */
+}
+
+.cart-item {
+    background-color: #f0e6d2;
+    margin: 10px;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+.confirm-order-button {
+    background-color: #c0a080;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: none; /* No shadow for the confirm button */
+}
+
+.confirm-order-button:hover {
+    background-color: #b08968; /* Slightly darker shade on hover */
+}

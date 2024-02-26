@@ -1,0 +1,34 @@
+/* Continue using the CSS rules from the home page here. */
+/* Add or adjust any new CSS rules for the beverage selection page below. */
+
+.beverage-selection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+    gap: 20px; /* Space between buttons */
+    justify-items: center; /* Center buttons horizontally */
+    align-items: center; /* Center buttons vertically */
+    margin: 20px; /* Space around the button grid */
+}
+
+.beverage-selection button {
+    background-color: #d2b48c; /* Tan color */
+    border: none;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.beverage-selection button:hover {
+    background-color: #cda776; /* Darker tan color for hover effect */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .beverage-selection {
+        grid-template-columns: 1fr; /* Stack buttons on smaller screens */
+        width: 80%;
+        margin: 20px auto; /* Center the grid on the page */
+    }
+}

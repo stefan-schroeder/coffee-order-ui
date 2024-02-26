@@ -1,0 +1,77 @@
+/* Reset some basic elements */
+body, h1, h2, button, input, label, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Updated body styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4dab6; /* Beige background */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+/* Updated header styles with title and menu integrated */
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #e16923; /* Saddlebrown text color */
+    margin-bottom: 20px;
+}
+
+/* Specific title styles integrated */
+h1.title {
+    font-size: 24px;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: left;
+}
+
+/* Menu styles integrated */
+.menu, h2.menu {
+    margin: 10px;
+    flex-grow: 1;
+    text-align: right;
+}
+
+/* Update button styles to incorporate new and existing styles */
+button {
+    background-color: #d2b48c; /* Tan color for buttons */
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: xx-large; /* New font size */
+}
+
+/* Specific styles for menu button */
+.menu button {
+    background-color: #f4dab6; /* Specific background color for menu button */
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+/* Hover effect for all buttons */
+button:hover, .menu button:hover {
+    background-color: #cda776; /* Darker tan color for hover effect */
+}
+
+/* Main content styles */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
