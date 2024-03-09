@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Select Beverage</title>
     <link rel="stylesheet" href="beverages.css">
-    <script src="order.js"></script>
 </head>
 <body>
     <header>
@@ -14,29 +13,26 @@
     <main>
         <h3>Select the beverage</h3>
         <div class="beverage-selection">
-            <button onclick="selectBeverage('Dark Roast', 1.45); location.href='condiments.html'">Dark Roast</button>
+            <button onclick="selectBeverage('Dark Roast', 1.99); location.href='condiments.html'">Dark Roast</button>
             <button onclick="selectBeverage('House Blend', 1.65); location.href='condiments.html'">House Blend</button>
             <button onclick="selectBeverage('Espresso', 1.34); location.href='condiments.html'">Espresso</button>
             <button onclick="selectBeverage('Decaf', 1.28); location.href='condiments.html'">Decaf</button>
         </div>
     </main>
     <script>
-        var order = {
-            beverage: null,
-            beveragePrice: 0,
-            condiments: [],
-            condimentPrices: [],
-            totalPrice: function() {
-                return this.beveragePrice + this.condimentPrices.reduce(function(acc, price) {
-                    return acc + price;
-                }, 0);
-            }
-        };
-    
-        function selectBeverage(beverageName, price) {
-            order.beverage = beverageName;
-            order.beveragePrice = price;
+        
+        
+        function selectBeverage(beverageName) {
+            const order = {
+                beverage: beverageName,
+                condiments: []
+            };
+            localStorage.setItem('order', JSON.stringify(order));
+            window.location.href = 'condiments.html'; // Navigate to the next selection phase
         }
+
+        
+
     </script>
 </body>
 </html>

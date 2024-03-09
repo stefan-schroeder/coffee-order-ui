@@ -18,5 +18,32 @@
             <p>Total: <span class="highlight">$4.5</span></p>
         </div>
     </main>
+    <script>
+        let HOST = 'http://localhost:8080';
+        // This script goes into your 'confirmation.html' or a confirmation script section in 'condiments.html'
+        document.addEventListener('DOMContentLoaded', function() {
+            const order = JSON.parse(localStorage.getItem('order'));
+            fetch('YOUR_BACKEND_ENDPOINT/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(order),
+            })
+            .then(response => response.json())
+            .then(receipt => {
+                // Display the receipt details
+                document.getElementById('orderDetails').innerHTML = `
+                    <p>Order Placed Successfully!</p>
+                    <p>Order ID: <span class="highlight">${receipt.id}</span></p>
+                    <p>Description: <span>${receipt.description}</span></p>
+                    <p>Total: <span class="highlight">$${receipt.cost.toFixed(2)}</span></p>
+                `;
+            })
+            .catch(error => console.error('Error submitting order:', error));
+        });
+
+    </script>
+    
 </body>
 </html>

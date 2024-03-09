@@ -29,35 +29,56 @@
     </div>
 
     <script>
+        const order = JSON.parse(localStorage.getItem('order')) || {condiments: [], condimentPrices: []};
+        const cartItems = document.getElementById('cart-items');
+        updateCartUI();
         
-    const cartItems = document.getElementById('cart-items');
-
-    document.getElementById('condiments').addEventListener('click', function(event) {
-        if (event.target.dataset.condiment) {
-        toggleCartItem(event.target.dataset.condiment);
+        document.getElementById('condiments').addEventListener('click', function(event) {
+            if (event.target.dataset.condiment) {
+                toggleCartItem(event.target.dataset.condiment);
+            }
+        });
+        
+        function toggleCartItem(condiment) {
+            const index = order.condiments.indexOf(condiment);
+            if (index > -1) {
+                order.condiments.splice(index, 1);
+            } else {
+                order.condiments.push(condiment);
+                // Assuming a fixed price for demo purposes, this should ideally come from your product data
+                order.condimentPrices.push(0.5); // Example fixed price
+            }
+            localStorage.setItem('order', JSON.stringify(order));
+            updateCartUI();
         }
-    });
-
-    cartItems.addEventListener('click', function(event) {
-        if (event.target.classList.contains('cart-item')) {
-        toggleCartItem(event.target.dataset.condiment);
+        
+        function updateCartUI() {
+            cartItems.innerHTML = ''; // Clear current items
+            order.condiments.forEach(condiment => {
+                let newItem = document.createElement('button');
+                newItem.textContent = condiment;
+                newItem.classList.add('button', 'cart-item');
+                newItem.dataset.condiment = condiment;
+                cartItems.appendChild(newItem);
+            });
         }
-    });
+        
+        document.getElementById('condiments').addEventListener('click', function(event) {
+            if (event.target.dataset.condiment) {
+                const order = JSON.parse(localStorage.getItem('order'));
+                const condimentIndex = order.condiments.indexOf(event.target.dataset.condiment);
+                if (condimentIndex > -1) {
+                    order.condiments.splice(condimentIndex, 1); 
+                } else {
+                    order.condiments.push(event.target.dataset.condiment);
+                }
+                localStorage.setItem('order', JSON.stringify(order));            }
+        });
 
+        document.querySelector('.confirm-order-button').addEventListener('click', function() {
+            window.location.href = 'confirmation.html';
+        });
 
-    function toggleCartItem(condiment) {
-        let existingItem = [...cartItems.children].find(item => item.dataset.condiment === condiment);
-        if (existingItem) {
-        cartItems.removeChild(existingItem);
-        } else {
-        let newItem = document.createElement('button');
-        newItem.textContent = condiment;
-        newItem.classList.add('button', 'cart-item');
-        newItem.dataset.condiment = condiment;
-        cartItems.appendChild(newItem);
-        }
-    }
     </script>
-
 </body>
 </html>
